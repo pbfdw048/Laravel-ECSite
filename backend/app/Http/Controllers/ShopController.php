@@ -43,13 +43,19 @@ class ShopController extends Controller
         return view('mycart', $data)->with(compact('message'));
     }
 
-    public function checkout(Cart $cart)
+    public function checkout(Request $request, Cart $cart)
     {
         $user = Auth::user();
         $mail_data['user'] = $user->name;
-        $mail_data['cart_data'] = $cart->showCart();
-        $mail_data['checkout_items'] = $cart->checkoutCart();
+
+        $cart_data = $cart->showCart();
+        $mail_data['count'] = $cart_data['count'];
+        $mail_data['sum'] = $cart_data['sum'];
+
+        $mail_data['checkout_items'] = $cart->checkoutCart($request);
+
         Mail::to($user->email)->send(new Thanks($mail_data));
+
         return view('checkout');
     }
 }
