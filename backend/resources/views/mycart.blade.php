@@ -41,7 +41,9 @@
             <p class="text-center">カートに商品が入っていません。</p>
             @endif
 
-            <a href="/">商品一覧へ</a>
+            <div class="text-center">
+                <a href="/">商品一覧へ</a>
+            </div>
         </div>
     </div>
 
