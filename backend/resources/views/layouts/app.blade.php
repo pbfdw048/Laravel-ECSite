@@ -93,6 +93,33 @@
         <main class="py-4">
             @yield('content')
         </main>
+
+        <footer class="footer_design" style="background-color:#0092b3;">
+
+            @guest
+            <p class=" nav-item" style="display:inline;">
+                <a class="nav-link" href="{{ route('login') }}"
+                    style="color:#fefefe; display:inline;">{{ __('ログイン') }}</a>
+
+                @if (Route::has('register'))
+
+                <a class="nav-link" href="{{ route('register') }}"
+                    style="color:#fefefe; display:inline;">{{ __('会員登録') }}</a>
+            </p>
+            @endif
+
+            @endguest
+            <br>
+            <div style="margin-top:24px;">
+                なんでも売ります<br>
+                <a style="font-size:2.4em; color:#fefefe; text-decoration:none;" href="{{ url('/') }}">
+                    {{ config('app.name', 'Laravel') }}
+                </a><br>
+            </div>
+
+            <p style="font-size:0.7em;">@copyright @mukae9</p>
+
+        </footer>
     </div>
 </body>
 
