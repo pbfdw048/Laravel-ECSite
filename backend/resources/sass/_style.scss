@@ -1,0 +1,48 @@
+.navbar-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+img.cart {
+    width: 30px;
+}
+
+img.incart {
+    width: 50%;
+    display: block;
+    margin: 0 auto;
+    height: 140px;
+    object-fit: cover;
+}
+
+.mycart_box {
+    color: #4c4c4c;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 24px;
+    padding: 24px 8px;
+    font-size: 1.1em;
+    background-color: #fefefe;
+}
+
+.footer_design {
+    background-color: #07728a;
+    text-align: center;
+    color: #fefefe;
+    padding: 60px;
+}
+
+.buy-btn {
+    margin: 40px auto 60px;
+    width: 200px;
+    display: block;
+    background-color: #ff5c73;
+}
+
+.ball {
+    position: absolute;
+}
+
+.pagenate {
+    width: 200px;
+    margin: 20px auto;
+}
