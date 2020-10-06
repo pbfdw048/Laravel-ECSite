@@ -12,15 +12,5 @@ class CartTableSeeder extends Seeder
      */
     public function run()
     {
-        Cart::truncate();
-
-        Cart::create([
-            'stock_id' => 1,
-            'user_id' => 1
-        ]);
-        Cart::create([
-            'stock_id' => 2,
-            'user_id' => 2
-        ]);
     }
 }

@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 use App\User;
 use App\Models\Stock;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class Cart extends Model
 {
@@ -40,7 +42,7 @@ class Cart extends Model
     public function addCart($stock_id)
     {
         $user_id = Auth::id();
-        $cart_add_info = Cart::firstOrCreate(['stock_id' => $stock_id, 'user_id' => $user_id]);
+        $cart_add_info = $this->firstOrCreate(['stock_id' => $stock_id, 'user_id' => $user_id]);
 
         if ($cart_add_info->wasRecentlyCreated) {
             $message = 'カートに追加しました';
@@ -69,6 +71,11 @@ class Cart extends Model
     {
         $user_id = Auth::id();
         $checkout_items = $this->with('stock')->where('user_id', $user_id)->get();
+        $cart_version = $this->where('user_id', $user_id)->first()->cart_version;
+
+        Schema::table('carts', function (Blueprint $table) use ($cart_version) {
+            $table->integer('cart_version')->default($cart_version + 1)->change();
+        });
         $this->where('user_id', $user_id)->delete();
 
         return $checkout_items;

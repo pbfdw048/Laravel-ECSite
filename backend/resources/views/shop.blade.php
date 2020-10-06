@@ -34,8 +34,8 @@
                     </div>
                     @endforeach
                 </div>
-                <div class="text-center" style="width: 200px;margin: 20px auto;">
-                    {{  $stocks->links()}}
+                <div class="text-center" style="width: 150px; margin: 20px auto;">
+                    {{ $stocks->links()}}
                 </div>
             </div>
         </div>

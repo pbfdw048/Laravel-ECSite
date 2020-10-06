@@ -8,6 +8,7 @@ use App\Models\Cart;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\Thanks;
+use App\Models\History;
 
 class ShopController extends Controller
 {
@@ -43,7 +44,7 @@ class ShopController extends Controller
         return view('mycart', $data)->with(compact('message'));
     }
 
-    public function checkout(Request $request, Cart $cart)
+    public function checkout(Request $request, Cart $cart, History $history)
     {
         $user = Auth::user();
         $mail_data['user'] = $user->name;
@@ -52,7 +53,9 @@ class ShopController extends Controller
         $mail_data['count'] = $cart_data['count'];
         $mail_data['sum'] = $cart_data['sum'];
 
-        $mail_data['checkout_items'] = $cart->checkoutCart($request);
+        $checkout_items = $cart->checkoutCart();
+        $history->addHistory($checkout_items);
+        $mail_data['checkout_items'] = $checkout_items;
 
         Mail::to($user->email)->send(new Thanks($mail_data));
 

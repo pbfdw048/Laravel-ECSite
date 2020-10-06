@@ -20,6 +20,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/mycart', 'ShopController@addMycart');
     Route::post('/cartdelete', 'ShopController@deleteCart');
     Route::post('/checkout', 'ShopController@checkout');
+    Route::get('/history', 'HistoryController@history');
+    Route::get('/history/{cart_version}', 'HistoryController@detail');
 });
 
 Auth::routes();

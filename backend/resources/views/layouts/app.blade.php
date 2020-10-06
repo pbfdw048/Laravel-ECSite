@@ -72,16 +72,24 @@
                                     @csrf
                                 </form>
 
-                                {{-- 追加 --}}
+
                                 <a class="dropdown-item" href="{{ url('/mycart') }}">
                                     カートを見る
                                 </a>
+                                <a class="dropdown-item" href="{{ url('/history') }}">
+                                    購入履歴を見る
+                                </a>
                             </div>
                         </li>
-                        {{-- 追加 --}}
-                        <a href="{{ url('/mycart') }}">
+
+
+                        <a class="m-1" href="{{ url('/mycart') }}">
                             <img src="{{ asset('image/cart.png') }}" class="cart">
                         </a>
+                        <a class="m-1" href="{{ url('/history') }}">
+                            <img src="{{ asset('image/history.png') }}" class="cart">
+                        </a>
+
                         @endguest
 
 
