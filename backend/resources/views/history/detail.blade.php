@@ -19,7 +19,7 @@
                 商品名 : {{$my_cart->stock->name}} <br>
                 価格 : {{number_format($my_cart->stock->fee)}}円<br>
                 数量 : {{ $my_cart->cart_count }}<br>
-                <img src="/image/{{$my_cart->stock->imgpath}}" alt="" class="incart">
+                <img src="/storage/image/{{$my_cart->stock->imgpath}}" alt="" class="incart">
                 <br>
 
 
