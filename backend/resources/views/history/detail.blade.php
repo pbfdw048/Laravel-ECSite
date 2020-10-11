@@ -18,7 +18,7 @@
             <div class="mycart_box">
                 商品名 : {{$my_cart->stock->name}} <br>
                 価格 : {{number_format($my_cart->stock->fee)}}円<br>
-                数量 : 1<br>
+                数量 : {{ $my_cart->cart_count }}<br>
                 <img src="/image/{{$my_cart->stock->imgpath}}" alt="" class="incart">
                 <br>
 
@@ -28,7 +28,7 @@
             @endforeach
 
             <div class="text-center p-2" style="font-size:1.2em; font-weight:bold;">
-                計 ： {{$count}}点<br>
+                計 ： {{$total_count}}点<br>
                 <p>合計金額 : {{number_format($sum)}}円</p>
             </div>
 

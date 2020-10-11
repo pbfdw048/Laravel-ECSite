@@ -30,24 +30,42 @@ class Cart extends Model
         $user_id = Auth::id();
         $data['my_carts'] = $this->with('stock')->where('user_id', $user_id)->get();
 
-        $data['count'] = $this->where('user_id', $user_id)->count();
-
+        $data['total_count'] = 0;
         $data['sum'] = 0;
         foreach ($data['my_carts'] as $my_cart) {
-            $data['sum'] += $my_cart->stock->fee;
+            $cart_count = $my_cart->cart_count;
+            $data['total_count'] += $cart_count;
+            $data['sum'] += $my_cart->stock->fee * $cart_count;
         }
         return $data;
     }
 
-    public function addCart($stock_id)
+    public function addCart($stock_id, $cart_count)
     {
         $user_id = Auth::id();
-        $cart_add_info = $this->firstOrCreate(['stock_id' => $stock_id, 'user_id' => $user_id]);
+        $cart_add_info = $this->firstOrCreate(['stock_id' => $stock_id, 'user_id' => $user_id], ['cart_count' => $cart_count]);
 
         if ($cart_add_info->wasRecentlyCreated) {
             $message = 'カートに追加しました';
         } else {
-            $message = 'カートに登録済みです';
+            $message = '商品は既にカートに登録済みです。数量はカート内にて変更できます。';
+        }
+
+        return $message;
+    }
+
+    public function updateCart($stock_id, $cart_count)
+    {
+        $user_id = Auth::id();
+        $updateCart = Cart::where(['stock_id' => $stock_id, 'user_id' => $user_id])->first();
+        $updateCart->cart_count = $cart_count;
+        $update = $updateCart->save();
+
+
+        if ($update > 0) {
+            $message = '数量を変更しました';
+        } else {
+            $message = '数量の変更に失敗しました';
         }
 
         return $message;

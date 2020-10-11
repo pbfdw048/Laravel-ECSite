@@ -8,14 +8,22 @@
             {{ Auth::user()->name }}さんのカートの中身</h1>
 
         <div class="card-body">
-            <p class="text-center">{{ $message ?? '' }}</p><br>
+            <p class="text-center font-weight-bold">{{ $message ?? '' }}</p><br>
 
             @if($my_carts->isNotEmpty())
 
             @foreach($my_carts as $my_cart)
             <div class="mycart_box">
-                {{$my_cart->stock->name}} <br>
-                {{number_format($my_cart->stock->fee)}}円<br>
+                商品名 : {{$my_cart->stock->name}} <br>
+                価格 : {{number_format($my_cart->stock->fee)}}円<br>
+                <form action="cartupdate" method="post">
+                    @csrf
+                    <input type="hidden" name="stock_id" value="{{ $my_cart->stock->id }}">
+                    <input type="number" name="cart_count" value="{{ $my_cart->cart_count }}" min="1"
+                        style="text-align: center; width: 50px; margin: 5px auto;">
+                    個
+                    <input type="submit" value="変更">
+                </form><br>
                 <img src="/image/{{$my_cart->stock->imgpath}}" alt="" class="incart">
                 <br>
 
@@ -28,9 +36,9 @@
             </div>
             @endforeach
 
-            <div class="text-center p-2">
-                個数：{{$count}}個<br>
-                <p style="font-size:1.2em; font-weight:bold;">合計金額:{{number_format($sum)}}円</p>
+            <div class="text-center pt-5" style="font-size:1.4em; font-weight:bold;">
+                計：{{$total_count}}点<br>
+                合計金額 : {{number_format($sum)}}円
             </div>
             <form action="/checkout" method="POST">
                 @csrf

@@ -17,6 +17,7 @@ class CreateHistoriesTable extends Migration
             $table->id();
             $table->integer('stock_id');
             $table->integer('user_id');
+            $table->integer('cart_count');
             $table->integer('cart_version');
             $table->timestamps();
         });

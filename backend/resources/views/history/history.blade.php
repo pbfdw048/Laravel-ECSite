@@ -15,7 +15,7 @@
             <div class="mycart_box">
                 <a href="{{ url('/history/' . $my_cart->cart_version) }}" style="color:#000000; text-decoration:none;">
                     {{$my_cart->created_at}} <br>
-                    {{$my_cart->stock->name}} {{number_format($my_cart->stock->fee)}}円
+                    {{$my_cart->stock->name}} {{number_format($my_cart->stock->fee)}}円 数量({{ $my_cart->cart_count }})
                 </a>
                 <button class="ml-2"
                     onclick="location.href='{{ url('/history/' . $my_cart->cart_version) }}' ">詳細へ</button>

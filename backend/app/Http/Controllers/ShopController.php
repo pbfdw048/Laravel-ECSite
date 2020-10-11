@@ -27,7 +27,19 @@ class ShopController extends Controller
     public function addMyCart(Request $request, Cart $cart)
     {
         $stock_id = $request->stock_id;
-        $message = $cart->addCart($stock_id);
+        $cart_count = $request->cart_count;
+        $message = $cart->addCart($stock_id, $cart_count);
+
+        $data = $cart->showCart();
+
+        return view('mycart', $data)->with(compact('message'));
+    }
+
+    public function updateMyCart(Request $request, Cart $cart)
+    {
+        $stock_id = $request->stock_id;
+        $cart_count = $request->cart_count;
+        $message = $cart->updateCart($stock_id, $cart_count);
 
         $data = $cart->showCart();
 
@@ -50,7 +62,7 @@ class ShopController extends Controller
         $mail_data['user'] = $user->name;
 
         $cart_data = $cart->showCart();
-        $mail_data['count'] = $cart_data['count'];
+        $mail_data['total_count'] = $cart_data['total_count'];
         $mail_data['sum'] = $cart_data['sum'];
 
         $checkout_items = $cart->checkoutCart();

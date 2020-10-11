@@ -23,6 +23,7 @@ class History extends Model
             $this->Create([
                 'stock_id' => $checkout_item->stock_id,
                 'user_id' => $checkout_item->user_id,
+                'cart_count' => $checkout_item->cart_count,
                 'cart_version' => $checkout_item->cart_version
             ]);
         }
@@ -44,13 +45,13 @@ class History extends Model
         ])->orderBy('id', 'desc')->get();
 
 
-        $data['count'] = 0;
+        $data['total_count'] = 0;
         $data['sum'] = 0;
         foreach ($data['my_carts'] as $my_cart) {
-            $data['sum'] += $my_cart->stock->fee;
-            $data['count']++;
+            $cart_count = $my_cart->cart_count;
+            $data['total_count'] += $cart_count;
+            $data['sum'] += $my_cart->stock->fee * $cart_count;
         }
-
         return $data;
     }
 }

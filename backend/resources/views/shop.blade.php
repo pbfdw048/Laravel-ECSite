@@ -24,6 +24,8 @@
                             <form action="mycart" method="post">
                                 @csrf
                                 <input type="hidden" name="stock_id" value="{{ $stock->id }}">
+                                <input type="number" name="cart_count" value="1" min="1"
+                                    style="text-align: center; width: 50px; margin: 5px auto;"> 個<br>
                                 <input type="submit" value="カートに入れる">
                             </form>
 
