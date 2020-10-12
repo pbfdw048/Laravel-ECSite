@@ -4,11 +4,14 @@
 <div class="container-fluid">
 
     <div class="mx-auto" style="max-width:1200px">
-        <h1 class="text-center font-weight-bold" style="color:#555555;  font-size:1.2em; padding:24px 0px;">
-            {{ Auth::user()->name }}さんのカートの中身</h1>
+        @if ( $message ?? '')
+        <p class="text-center font-weight-bold bg-info p-4 mt-3 mx-auto w-75">{{ $message ?? '' }}</p><br>
+        @endif
+
+        <h2 class="text-center text-secondary font-weight-bold pt-4">
+            {{ Auth::user()->name }}さんのカートの中身</h2>
 
         <div class="card-body">
-            <p class="text-center font-weight-bold">{{ $message ?? '' }}</p><br>
 
             @if($my_carts->isNotEmpty())
 

@@ -18,6 +18,7 @@ class CreateStocksTable extends Migration
             $table->string('name', '100');
             $table->string('detail', '500');
             $table->integer('fee');
+            $table->unsignedInteger('stock_count');
             $table->string('imgpath', '200');
             $table->timestamps();
         });

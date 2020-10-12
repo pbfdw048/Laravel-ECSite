@@ -4,8 +4,8 @@
 <div class="container-fluid">
 
     <div class="mx-auto" style="max-width:1200px">
-        <h1 class="text-center font-weight-bold pt-3" style="color:#555555; font-size:1.6em;">
-            {{ Auth::user()->name }}さんの購入履歴</h1>
+        <h2 class="text-center text-secondary font-weight-bold pt-4">
+            {{ Auth::user()->name }}さんの購入履歴</h2>
 
         <div class="card-body">
 

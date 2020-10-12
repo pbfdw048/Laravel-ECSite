@@ -4,8 +4,8 @@
 <div class="container-fluid">
 
     <div class="mx-auto" style="max-width:1200px">
-        <h1 class="text-center font-weight-bold pt-2" style="color:#555555; font-size:1.6em; ">
-            {{ Auth::user()->name }}さんの購入詳細</h1>
+        <h2 class="text-center text-secondary font-weight-bold pt-4">
+            {{ Auth::user()->name }}さんの購入詳細</h2>
         <div class="card-body">
             @if($my_carts->isNotEmpty())
 

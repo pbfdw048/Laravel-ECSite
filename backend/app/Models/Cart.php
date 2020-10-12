@@ -8,6 +8,7 @@ use App\Models\Stock;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 class Cart extends Model
 {
@@ -90,6 +91,15 @@ class Cart extends Model
         $user_id = Auth::id();
         $checkout_items = $this->with('stock')->where('user_id', $user_id)->get();
         $cart_version = $this->where('user_id', $user_id)->first()->cart_version;
+        DB::transaction(function () use ($checkout_items) {
+            foreach ($checkout_items as  $item) {
+                $stock_count =  $item->stock->stock_count;
+                $cart_count = $item->cart_count;
+                $new_stock_count = $stock_count - $cart_count;
+                $item->stock->stock_count = $new_stock_count;
+                $item->stock->save();
+            }
+        });
 
         Schema::table('carts', function (Blueprint $table) use ($cart_version) {
             $table->integer('cart_version')->default($cart_version + 1)->change();

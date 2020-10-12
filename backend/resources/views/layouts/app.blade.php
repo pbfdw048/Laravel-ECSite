@@ -84,10 +84,10 @@
 
 
                         <a class="m-1" href="{{ url('/mycart') }}">
-                            <img src="{{ asset('image/cart.png') }}" class="cart">
+                            <img src="{{ asset('/storage/image/cart.png') }}" class="cart">
                         </a>
                         <a class="m-1" href="{{ url('/history') }}">
-                            <img src="{{ asset('image/history.png') }}" class="cart">
+                            <img src="{{ asset('/storage/image/history.png') }}" class="cart">
                         </a>
 
                         @endguest
@@ -97,6 +97,18 @@
                 </div>
             </div>
         </nav>
+
+        @if (session('msg_danger'))
+        <div class="flash_message bg-danger text-center text-white p-4 mt-5 mx-auto w-75">
+            {{ session('msg_danger') }}
+        </div>
+        @endif
+
+        @if (session('msg_success'))
+        <div class="flash_message bg-success text-center text-white p-4 mt-5 mx-auto w-75">
+            {{ session('msg_success') }}
+        </div>
+        @endif
 
         <main class="py-4">
             @yield('content')

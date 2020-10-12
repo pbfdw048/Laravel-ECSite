@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\Thanks;
 use App\Models\History;
+use Throwable;
 
 class ShopController extends Controller
 {
@@ -65,7 +66,14 @@ class ShopController extends Controller
         $mail_data['total_count'] = $cart_data['total_count'];
         $mail_data['sum'] = $cart_data['sum'];
 
-        $checkout_items = $cart->checkoutCart();
+
+
+        try {
+            $checkout_items = $cart->checkoutCart();
+        } catch (Throwable $e) {
+            return redirect('mycart')->with('msg_danger', '在庫不足のため購入できませんでした。');
+        }
+
         $history->addHistory($checkout_items);
         $mail_data['checkout_items'] = $checkout_items;
 
