@@ -19,6 +19,13 @@ class ShopController extends Controller
         return view('shop', compact('stocks'));
     }
 
+    public function search(Request $request)
+    {
+        $name = $request->search;
+        $stocks = Stock::search($name)->paginate(6);
+        return view('search', compact('name', 'stocks'));
+    }
+
     public function myCart(Cart $cart)
     {
         $data = $cart->showCart();
@@ -75,8 +82,9 @@ class ShopController extends Controller
         }
 
         $history->addHistory($checkout_items);
-        $mail_data['checkout_items'] = $checkout_items;
 
+        $mail_data['checkout_items'] = $checkout_items;
+        $mail_data['url'] =  url('/history/' . $checkout_items->first()->cart_version);
         Mail::to($user->email)->send(new Thanks($mail_data));
 
         return view('checkout');

@@ -15,7 +15,7 @@
 
 以上、計{{ $total_count }}点 合計{{ number_format($sum) }}円となります。<br>
 
-@component('mail::button', ['url' => '', 'color' => 'success'])
+@component('mail::button', ['url' => $url , 'color' =>'success'])
 購入情報の詳細
 @endcomponent
 

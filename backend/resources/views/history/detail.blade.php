@@ -27,7 +27,7 @@
             </div>
             @endforeach
 
-            <div class="text-center p-2" style="font-size:1.2em; font-weight:bold;">
+            <div class="text-center mt-4 p-2" style="font-size:1.3em; font-weight:bold;">
                 計 ： {{$total_count}}点<br>
                 <p>合計金額 : {{number_format($sum)}}円</p>
             </div>

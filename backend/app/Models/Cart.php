@@ -90,7 +90,6 @@ class Cart extends Model
     {
         $user_id = Auth::id();
         $checkout_items = $this->with('stock')->where('user_id', $user_id)->get();
-        $cart_version = $this->where('user_id', $user_id)->first()->cart_version;
         DB::transaction(function () use ($checkout_items) {
             foreach ($checkout_items as  $item) {
                 $stock_count =  $item->stock->stock_count;
@@ -101,9 +100,11 @@ class Cart extends Model
             }
         });
 
+        $cart_version = $this->where('user_id', $user_id)->first()->cart_version;
         Schema::table('carts', function (Blueprint $table) use ($cart_version) {
             $table->integer('cart_version')->default($cart_version + 1)->change();
         });
+
         $this->where('user_id', $user_id)->delete();
 
         return $checkout_items;

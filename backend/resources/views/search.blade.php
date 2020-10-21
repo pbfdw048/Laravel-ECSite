@@ -4,7 +4,7 @@
 <div class="container-fluid">
     <div class="">
         <div class="mx-auto" style="max-width:1200px">
-            <h2 class="text-center text-secondary font-weight-bold pt-4">商品一覧</h2>
+            <h2 class="text-center text-secondary font-weight-bold pt-4">{{ $name }}の検索結果（{{ $stocks->count() }}件）</h2>
             <form action="/search" method="post" class="text-right">
                 @csrf
                 <input type="text" name="search" placeholder="商品名で検索">
@@ -25,6 +25,7 @@
                             {{$stock->detail}} <br>
 
 
+
                             <form action="mycart" method="post">
                                 @csrf
                                 <input type="hidden" name="stock_id" value="{{ $stock->id }}">
@@ -32,6 +33,7 @@
                                     style="text-align: center; width: 50px; margin: 5px auto;"> 個<br>
                                 <input type="submit" value="カートに入れる">
                             </form>
+
 
                         </div>
 
