@@ -61,6 +61,8 @@ class ShopController extends Controller
 
         $data = $cart->showCart();
 
+        $request->session()->regenerateToken();
+
         return view('mycart', $data)->with(compact('message'));
     }
 
@@ -78,7 +80,7 @@ class ShopController extends Controller
         try {
             $checkout_items = $cart->checkoutCart();
         } catch (Throwable $e) {
-            return redirect('mycart')->with('msg_danger', '在庫不足のため購入できませんでした。');
+            return redirect('mycart')->with('msg_danger', $e->getMessage());
         }
 
         $history->addHistory($checkout_items);

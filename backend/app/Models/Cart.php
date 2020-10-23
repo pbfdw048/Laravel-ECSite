@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
+use Exception;
 
 class Cart extends Model
 {
@@ -95,6 +96,9 @@ class Cart extends Model
                 $stock_count =  $item->stock->stock_count;
                 $cart_count = $item->cart_count;
                 $new_stock_count = $stock_count - $cart_count;
+                if ($new_stock_count < 0) {
+                    throw new Exception("在庫不足のため購入できませんでした。");
+                }
                 $item->stock->stock_count = $new_stock_count;
                 $item->stock->save();
             }
