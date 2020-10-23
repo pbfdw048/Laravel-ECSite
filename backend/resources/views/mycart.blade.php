@@ -27,7 +27,7 @@
                     個
                     <input type="submit" value="変更">
                 </form><br>
-                <img src="/storage//image/{{$my_cart->stock->imgpath}}" alt="" class="incart">
+                <img src="/storage/{{$my_cart->stock->imgpath}}" alt="" class="incart">
                 <br>
 
                 <form action="/cartdelete" method="POST">
