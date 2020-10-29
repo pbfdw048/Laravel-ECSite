@@ -91,7 +91,8 @@ class Cart extends Model
     {
         $user_id = Auth::id();
         $checkout_items = $this->with('stock')->where('user_id', $user_id)->get();
-        DB::transaction(function () use ($checkout_items) {
+
+        DB::transaction(function () use ($user_id, $checkout_items) {
             foreach ($checkout_items as  $item) {
                 $stock_count =  $item->stock->stock_count;
                 $cart_count = $item->cart_count;
@@ -102,14 +103,19 @@ class Cart extends Model
                 $item->stock->stock_count = $new_stock_count;
                 $item->stock->save();
             }
-        });
 
-        $cart_version = $this->where('user_id', $user_id)->first()->cart_version;
-        Schema::table('carts', function (Blueprint $table) use ($cart_version) {
-            $table->integer('cart_version')->default($cart_version + 1)->change();
-        });
+            $oldCart = $this->where('user_id', $user_id)->first();
+            if (is_null($oldCart)) {
+                throw new Exception("ご購入ありがとうございます。「購入する」ボタンが複数回クリックされましたが、購入は初回クリック分のみ有効となっております。初回クリック分の購入情報は、ご登録頂いたメールアドレスへお送りしております。ご確認ください。");
+            }
+            $cart_version = $oldCart->cart_version;
 
-        $this->where('user_id', $user_id)->delete();
+            Schema::table('carts', function (Blueprint $table) use ($cart_version) {
+                $table->integer('cart_version')->default($cart_version + 1)->change();
+            });
+
+            $this->where('user_id', $user_id)->delete();
+        });
 
         return $checkout_items;
     }

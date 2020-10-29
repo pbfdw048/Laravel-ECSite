@@ -56,18 +56,20 @@ class ShopController extends Controller
 
     public function deleteCart(Request $request, Cart $cart)
     {
+        $request->session()->regenerateToken();
+
         $stock_id = $request->stock_id;
         $message = $cart->deleteCart($stock_id);
 
         $data = $cart->showCart();
-
-        $request->session()->regenerateToken();
 
         return view('mycart', $data)->with(compact('message'));
     }
 
     public function checkout(Request $request, Cart $cart, History $history)
     {
+        $request->session()->regenerateToken();
+
         $user = Auth::user();
         $mail_data['user'] = $user->name;
 
