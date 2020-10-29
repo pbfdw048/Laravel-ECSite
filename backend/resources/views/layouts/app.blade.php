@@ -84,10 +84,10 @@
 
 
                         <a class="m-1" href="{{ url('/mycart') }}">
-                            <img src="{{ asset('/storage/image/cart.png') }}" class="cart">
+                            <img src="{{ asset('/storage/images/cart.png') }}" class="cart">
                         </a>
                         <a class="m-1" href="{{ url('/history') }}">
-                            <img src="{{ asset('/storage/image/history.png') }}" class="cart">
+                            <img src="{{ asset('/storage/images/history.png') }}" class="cart">
                         </a>
 
                         @endguest
