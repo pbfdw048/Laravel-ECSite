@@ -141,6 +141,13 @@
 
         </footer>
     </div>
+
+    <script type="module">
+        $('form').on('click', '[type="button"]', function(){
+        $('[type="button"]').prop('disabled', true);
+        $(this).parents('form').submit();
+        });
+    </script>
 </body>
 
 </html>

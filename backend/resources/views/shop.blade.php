@@ -8,7 +8,7 @@
             <form action="/search" method="post" class="text-right">
                 @csrf
                 <input type="text" name="search" placeholder="商品名で検索">
-                <input type="submit" value="検索">
+                <input type="button" value="検索">
             </form>
             <div class="">
                 <div class=" d-flex flex-row flex-wrap">
@@ -30,7 +30,7 @@
                                 <input type="hidden" name="stock_id" value="{{ $stock->id }}">
                                 <input type="number" name="cart_count" value="1" min="1"
                                     style="text-align: center; width: 50px; margin: 5px auto;"> 個<br>
-                                <input type="submit" value="カートに入れる">
+                                <input type="button" value="カートに入れる">
                             </form>
 
                         </div>

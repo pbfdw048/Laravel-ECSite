@@ -25,7 +25,7 @@
                     <input type="number" name="cart_count" value="{{ $my_cart->cart_count }}" min="1"
                         style="text-align: center; width: 50px; margin: 5px auto;">
                     個
-                    <input type="submit" value="変更">
+                    <input type="button" value="変更">
                 </form><br>
                 <img src="/storage/{{$my_cart->stock->imgpath}}" alt="" class="incart">
                 <br>
@@ -33,7 +33,7 @@
                 <form action="/cartdelete" method="POST">
                     @csrf
                     <input type="hidden" name="stock_id" value="{{ $my_cart->stock->id }}">
-                    <input type="submit" value="カートから削除する">
+                    <input type="button" value="カートから削除する">
                 </form>
 
             </div>
@@ -45,7 +45,7 @@
             </div>
             <form action="/checkout" method="POST">
                 @csrf
-                <button type="submit" class="btn btn-danger btn-lg text-center buy-btn">購入する</button>
+                <input type="button" value="購入する" class="btn btn-danger btn-lg text-center buy-btn">
             </form>
 
             @else
