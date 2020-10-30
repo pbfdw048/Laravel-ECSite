@@ -89,7 +89,10 @@ class ShopController extends Controller
 
         $mail_data['checkout_items'] = $checkout_items;
         $mail_data['url'] =  url('/history/' . $checkout_items->first()->cart_version);
-        Mail::to($user->email)->send(new Thanks($mail_data));
+
+        dispatch(function () use ($user, $mail_data) {
+            Mail::to($user->email)->send(new Thanks($mail_data));
+        })->afterResponse();
 
         return view('checkout');
     }
