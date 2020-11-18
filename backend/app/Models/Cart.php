@@ -45,7 +45,14 @@ class Cart extends Model
     public function addCart($stock_id, $cart_count)
     {
         $user_id = Auth::id();
-        $cart_add_info = $this->firstOrCreate(['stock_id' => $stock_id, 'user_id' => $user_id], ['cart_count' => $cart_count]);
+
+        $cart_first_item = $this->where('user_id', $user_id)->first();
+        if ($cart_first_item === null) {
+            $cart_add_info = $this->firstOrCreate(['stock_id' => $stock_id, 'user_id' => $user_id], ['cart_count' => $cart_count]);
+        } else {
+            $cart_version = $cart_first_item->cart_version;
+            $cart_add_info = $this->firstOrCreate(['stock_id' => $stock_id, 'user_id' => $user_id], ['cart_count' => $cart_count, 'cart_version' => $cart_version]);
+        }
 
         if ($cart_add_info->wasRecentlyCreated) {
             $message = 'カートに追加しました';
