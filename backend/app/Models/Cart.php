@@ -101,7 +101,7 @@ class Cart extends Model
 
         DB::transaction(function () use ($user_id) {
 
-            $checkout_items2 = $this->with('stock')->where('user_id', $user_id)->get();
+            $checkout_items2 = $this->with('stock')->where('user_id', $user_id)->lockForUpdate()->get();
 
             foreach ($checkout_items2 as  $item) {
                 $stock_count =  $item->stock->stock_count;
