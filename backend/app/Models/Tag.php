@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Searchable;
 use Illuminate\Notifications\Notifiable;
-use App\Models\Tag;
+use App\Models\Stock;
 
-class Stock extends Model
+class Tag extends Model
 {
     use Searchable;
     use Notifiable;
@@ -16,25 +16,25 @@ class Stock extends Model
         'id'
     ];
 
-    public function tags()
+    public function stocks()
     {
-        return $this->belongsToMany(Tag::class);
+        return $this->belongsToMany(Stock::class);
     }
 
     public function searchableAs()
     {
-        return 'stocks_index';
+        return 'tags_index';
     }
 
     public function toSearchableArray()
     {
         $array = $this->toArray();
 
-        $tags = $this->tags;
+        $stocks = $this->stocks;
 
-        for ($i = 0; $i < $tags->count(); $i++) {
+        for ($i = 0; $i < $stocks->count(); $i++) {
 
-            $array["tag_names"][$i] = $tags[$i]['name'];
+            $array["stock_names"][$i] = $stocks[$i]['name'];
         }
 
 

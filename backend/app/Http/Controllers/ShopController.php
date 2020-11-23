@@ -15,15 +15,25 @@ class ShopController extends Controller
 {
     public function index()
     {
-        $stocks = Stock::paginate(6);
+        $stocks = Stock::with('tags')->paginate(6);
         return view('shop', compact('stocks'));
     }
 
     public function search(Request $request)
     {
         $name = $request->search;
+        $count = Stock::search($name)->count();
         $stocks = Stock::search($name)->paginate(6);
-        return view('search', compact('name', 'stocks'));
+        $stocks->load('tags');
+        return view('search', compact('name', 'count',  'stocks'));
+    }
+
+    public function tagSearch($name)
+    {
+        $count = Stock::search($name)->count();
+        $stocks = Stock::search($name)->paginate(6);
+        $stocks->load('tags');
+        return view('search', compact('name', 'count', 'stocks'));
     }
 
     public function myCart(Cart $cart)

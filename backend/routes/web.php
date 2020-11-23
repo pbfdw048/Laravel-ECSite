@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'ShopController@index');
 Route::post('/search', 'ShopController@search');
+Route::get('/tag/{name}', 'ShopController@tagSearch');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/mycart', 'ShopController@myCart');

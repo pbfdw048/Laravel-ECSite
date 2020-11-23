@@ -17,6 +17,8 @@
                     {{$my_cart->created_at}} <br>
                     {{$my_cart->stock->name}} {{number_format($my_cart->stock->fee)}}円 数量({{ $my_cart->cart_count }})
                 </a>
+                <img src="/storage/{{$my_cart->stock->imgpath}}" alt="" class="incart">
+                <br>
                 <button class="ml-2"
                     onclick="location.href='{{ url('/history/' . $my_cart->cart_version) }}' ">詳細へ</button>
             </div>

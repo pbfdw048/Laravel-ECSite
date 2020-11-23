@@ -13,4 +13,5 @@ Route::group([
 
     $router->get('/', 'HomeController@index')->name('home');
     $router->resource('stocks', StockController::class);
+    $router->resource('tags', TagController::class);
 });

@@ -40,7 +40,7 @@ class History extends Model
     public function showDetail($cart_version)
     {
         $user_id = Auth::id();
-        $data['my_carts'] = $this->with('stock')->where([
+        $data['my_carts'] = $this->with('stock.tags')->where([
             'user_id' => $user_id, 'cart_version' => $cart_version
         ])->orderBy('id', 'desc')->get();
 

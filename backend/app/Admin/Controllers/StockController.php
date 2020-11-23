@@ -7,6 +7,7 @@ use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
+use App\Models\Tag;
 
 class StockController extends AdminController
 {
@@ -32,6 +33,15 @@ class StockController extends AdminController
         $grid->column('detail', __('Detail'));
         $grid->column('fee', __('Fee'))->sortable();
         $grid->column('stock_count', __('Stock count'))->sortable();
+        $grid->tags()->pluck('name')->label();
+        // $grid->tags()->display(function ($tag) {
+        //     $tag = array_map(function ($tag) {
+        //         return "<span class='label label-success'>{$tag['name']}</span>";
+        //     }, $tag);
+
+        //     return join('&nbsp;', $tag);
+        // });
+
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
 
@@ -67,6 +77,8 @@ class StockController extends AdminController
      */
     protected function form()
     {
+        $tags = Tag::pluck('name', 'id');
+
         $form = new Form(new Stock());
 
         $form->text('name', 'Name');
@@ -74,6 +86,7 @@ class StockController extends AdminController
         $form->number('fee', __('Fee'))->min(1);
         $form->number('stock_count', __('Stock count'))->min(0);
         $form->image('imgpath', __('Imgpath'));
+        $form->multipleSelect('tags')->options($tags);
 
         return $form;
     }

@@ -30,7 +30,7 @@ class Cart extends Model
     public function showCart()
     {
         $user_id = Auth::id();
-        $data['my_carts'] = $this->with('stock')->where('user_id', $user_id)->get();
+        $data['my_carts'] = $this->with('stock.tags')->where('user_id', $user_id)->get();
 
         $data['total_count'] = 0;
         $data['sum'] = 0;
