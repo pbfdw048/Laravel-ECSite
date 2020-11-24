@@ -42,7 +42,7 @@ class History extends Model
         $user_id = Auth::id();
         $data['my_carts'] = $this->with('stock.tags')->where([
             'user_id' => $user_id, 'cart_version' => $cart_version
-        ])->orderBy('id', 'desc')->get();
+        ])->get();
 
 
         $data['total_count'] = 0;
