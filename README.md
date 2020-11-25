@@ -50,4 +50,4 @@ Laravel を使用して作成した EC サイトです。
 
 - 在庫不足時には購入不可
 
-![在庫不足時には購入不可](https://user-images.githubusercontent.com/58397349/100140019-b4217200-2ed3-11eb-8738-5d4b340a873b.gif)
+![在庫不足時には購入不可](https://user-images.githubusercontent.com/58397349/100256779-8b0ee900-2f88-11eb-9a75-fa9753d5c0c9.gif)

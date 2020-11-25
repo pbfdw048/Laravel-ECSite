@@ -111,7 +111,7 @@ class Cart extends Model
                 $cart_count = $item->cart_count;
                 $new_stock_count = $stock_count - $cart_count;
                 if ($new_stock_count < 0) {
-                    throw new Exception("在庫不足のため購入できませんでした。");
+                    throw new Exception("「{$item->stock->name}」が在庫不足のため購入できませんでした。");
                 }
                 $item->stock->stock_count = $new_stock_count;
                 $item->stock->save();
