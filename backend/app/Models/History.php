@@ -32,7 +32,7 @@ class History extends Model
     public function showHistory()
     {
         $user_id = Auth::id();
-        $data['my_carts'] = $this->with('stock')->where('user_id', $user_id)->orderBy('id', 'desc')->paginate(10);
+        $data['my_carts'] = $this->with('stock')->where('user_id', $user_id)->orderBy('cart_version', 'desc')->paginate(10);
 
         return $data;
     }
