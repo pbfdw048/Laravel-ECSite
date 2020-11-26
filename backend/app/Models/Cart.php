@@ -101,11 +101,11 @@ class Cart extends Model
 
         DB::transaction(function () use ($user_id) {
 
-            $checkout_items2 = $this->with('stock.tags')->where('user_id', $user_id)->orderBy('stock_id', 'asc')->get();
+            $checkout_items_orderBy_stock_id = $this->where('user_id', $user_id)->orderBy('stock_id', 'asc')->get();
 
-            foreach ($checkout_items2 as  $item) {
+            foreach ($checkout_items_orderBy_stock_id as  $item) {
 
-                Stock::where('id', $item->stock_id)->lockForUpdate()->first();
+                Stock::lockForUpdate()->find($item->stock_id);
 
                 $stock_count =  $item->stock->stock_count;
                 $cart_count = $item->cart_count;
