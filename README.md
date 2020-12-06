@@ -42,7 +42,7 @@ Laravel を使用して作成した EC サイトです。
 
 - Laravel-admin を使用した商品管理（下のデモでは、商品名・在庫数・サムネイル・タグを変更）
 
-![Laravel-admin を使用した商品管理](https://user-images.githubusercontent.com/58397349/100139692-31001c00-2ed3-11eb-9b1e-8301c5e09720.gif)
+![Laravel-admin を使用した商品管理](https://user-images.githubusercontent.com/58397349/101292590-cdbba580-3853-11eb-826f-4f1af3b7be22.gif)
 
 - laravel/scout（Algolia）を使用した商品検索
 
