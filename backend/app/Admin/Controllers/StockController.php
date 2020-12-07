@@ -66,6 +66,15 @@ class StockController extends AdminController
         $show->field('imgpath', __('Imgpath'));
         $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
+        $show->tags('Tags', function ($tags) {
+
+            $tags->resource('/admin/tags');
+
+            $tags->id()->sortable();
+            $tags->name()->sortable();
+            $tags->created_at()->sortable();
+            $tags->updated_at()->sortable();
+        });
 
         return $show;
     }
