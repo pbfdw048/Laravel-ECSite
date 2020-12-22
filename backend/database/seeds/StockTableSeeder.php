@@ -12,6 +12,57 @@ class StockTableSeeder extends Seeder
     public function run()
     {
         DB::table('stocks')->truncate(); //2回目実行の際にシーダー情報をクリア
+
+
+
+        DB::table('stocks')->insert([
+            'name' => 'パソコン',
+            'detail' => 'ジャンク品です',
+            'fee' => 11200,
+            'stock_count' => 10,
+            'imgpath' => 'images/pc.jpg',
+        ]);
+
+        DB::table('stocks')->insert([
+            'name' => 'アコースティックギター',
+            'detail' => 'ヤマハ製のエントリーモデルです',
+            'fee' => 25600,
+            'stock_count' => 10,
+            'imgpath' => 'images/aguiter.jpg',
+        ]);
+
+        DB::table('stocks')->insert([
+            'name' => 'エレキギター',
+            'detail' => '初心者向けのエントリーモデルです',
+            'fee' => 15600,
+            'stock_count' => 10,
+            'imgpath' => 'images/eguiter.jpg',
+        ]);
+
+        DB::table('stocks')->insert([
+            'name' => '加湿器',
+            'detail' => '乾燥する季節の必需品',
+            'fee' => 3200,
+            'stock_count' => 10,
+            'imgpath' => 'images/steamer.jpeg',
+        ]);
+
+        DB::table('stocks')->insert([
+            'name' => 'マウス',
+            'detail' => 'ゲーミングマウスです',
+            'fee' => 4200,
+            'stock_count' => 10,
+            'imgpath' => 'images/mouse.jpeg',
+        ]);
+
+        DB::table('stocks')->insert([
+            'name' => 'Android Garxy10',
+            'detail' => '中古美品です',
+            'fee' => 84200,
+            'stock_count' => 10,
+            'imgpath' => 'images/mobile.jpg',
+        ]);
+
         DB::table('stocks')->insert([
             'name' => 'フィルムカメラ',
             'detail' => '1960年式のカメラです',
@@ -34,6 +85,14 @@ class StockTableSeeder extends Seeder
             'fee' => 120000,
             'stock_count' => 10,
             'imgpath' => 'images/clock.jpg',
+        ]);
+
+        DB::table('stocks')->insert([
+            'name' => '精米',
+            'detail' => '米30Kgです',
+            'fee' => 11200,
+            'stock_count' => 10,
+            'imgpath' => 'images/kome.jpg',
         ]);
 
         DB::table('stocks')->insert([
@@ -83,62 +142,6 @@ class StockTableSeeder extends Seeder
             'fee' => 1200,
             'stock_count' => 10,
             'imgpath' => 'images/yakan.jpg',
-        ]);
-
-        DB::table('stocks')->insert([
-            'name' => '精米',
-            'detail' => '米30Kgです',
-            'fee' => 11200,
-            'stock_count' => 10,
-            'imgpath' => 'images/kome.jpg',
-        ]);
-
-        DB::table('stocks')->insert([
-            'name' => 'パソコン',
-            'detail' => 'ジャンク品です',
-            'fee' => 11200,
-            'stock_count' => 10,
-            'imgpath' => 'images/pc.jpg',
-        ]);
-
-        DB::table('stocks')->insert([
-            'name' => 'アコースティックギター',
-            'detail' => 'ヤマハ製のエントリーモデルです',
-            'fee' => 25600,
-            'stock_count' => 10,
-            'imgpath' => 'images/aguiter.jpg',
-        ]);
-
-        DB::table('stocks')->insert([
-            'name' => 'エレキギター',
-            'detail' => '初心者向けのエントリーモデルです',
-            'fee' => 15600,
-            'stock_count' => 10,
-            'imgpath' => 'images/eguiter.jpg',
-        ]);
-
-        DB::table('stocks')->insert([
-            'name' => '加湿器',
-            'detail' => '乾燥する季節の必需品',
-            'fee' => 3200,
-            'stock_count' => 10,
-            'imgpath' => 'images/steamer.jpeg',
-        ]);
-
-        DB::table('stocks')->insert([
-            'name' => 'マウス',
-            'detail' => 'ゲーミングマウスです',
-            'fee' => 4200,
-            'stock_count' => 10,
-            'imgpath' => 'images/mouse.jpeg',
-        ]);
-
-        DB::table('stocks')->insert([
-            'name' => 'Android Garxy10',
-            'detail' => '中古美品です',
-            'fee' => 84200,
-            'stock_count' => 10,
-            'imgpath' => 'images/mobile.jpg',
         ]);
     }
 }

@@ -23,7 +23,7 @@
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light  shadow-sm" style="background-color:#0092b3; color:#fefefe;">
+        <nav class="navbar navbar-expand-md navbar-light  shadow-sm" style="background-color:#888888; color:#fefefe;">
             <div class="container">
                 <a class="navbar-brand" style="color:#fefefe; font-size:1.4em" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -61,7 +61,7 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"
-                                style="background-color:#9fe7f7;">
+                                style="background-color:#dadada;">
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                    document.getElementById('logout-form').submit();">
                                     {{ __('ログアウト') }}
@@ -114,7 +114,7 @@
             @yield('content')
         </main>
 
-        <footer class="footer_design" style="background-color:#0092b3;">
+        <footer class="footer_design" style="background-color:#888888;">
 
             @guest
             <p class=" nav-item" style="display:inline;">
@@ -131,7 +131,7 @@
             @endguest
             <br>
             <div style="margin-top:24px;">
-                なんでも売ります<br>
+                あなたの"欲しい"が見つかる<br>
                 <a style="font-size:2.4em; color:#fefefe; text-decoration:none;" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a><br>

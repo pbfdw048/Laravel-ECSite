@@ -14,7 +14,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             AdminTablesSeeder::class,
             StockTableSeeder::class,
-            CartTableSeeder::class,
+            Stock_tagTableSeeder::class,
+            TagTableSeeder::class,
             UserTableSeeder::class,
         ]);
     }
