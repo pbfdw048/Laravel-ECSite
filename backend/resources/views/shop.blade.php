@@ -5,7 +5,7 @@
     <div class="">
         <div class="mx-auto" style="max-width:1200px">
             <h2 class="text-center text-secondary font-weight-bold pt-4">商品一覧</h2>
-            <form action="/search" method="post" class="text-right">
+            <form action="/search" method="get" class="text-right">
                 @csrf
                 <input type="text" name="search" placeholder="商品名かタグ名で検索">
                 <input type="button" value="検索">

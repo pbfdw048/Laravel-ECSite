@@ -7,7 +7,7 @@
             <h2 class="text-center text-secondary font-weight-bold pt-4">
                 {{ $name }}の検索結果（{{ $count }}件）
             </h2>
-            <form action="/search" method="post" class="text-right">
+            <form action="/search" method="get" class="text-right">
                 @csrf
                 <input type="text" name="search" placeholder="商品名かタグ名で検索">
                 <input type="button" value="検索">
@@ -44,7 +44,7 @@
 
                 </div>
                 <div class="text-center" style="width: 150px; margin: 20px auto;">
-                    {{ $stocks->links()}}
+                    {{ $stocks->appends(['search'=>$name])->links()}}
                 </div>
 
                 @if ( $stocks->hasPages())
