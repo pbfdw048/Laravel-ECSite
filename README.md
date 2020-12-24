@@ -38,16 +38,16 @@ Laravel を使用して作成した EC サイトです。
 
 - 基本の流れ（カートへ商品追加 -> カートから商品購入 -> 購入完了メールの送信 -> 受信メールから購入履歴詳細ページへ）
 
-![基本フロー](https://user-images.githubusercontent.com/58397349/100139513-f26a6180-2ed2-11eb-8345-e011b445cbbb.gif)
+![基本フロー2](https://user-images.githubusercontent.com/58397349/103074537-21c4d900-460d-11eb-86bd-9d4a1e17396d.gif)
 
-- Laravel-admin を使用した商品管理（下のデモでは、商品名・在庫数・サムネイル・タグを変更）
+- Laravel-admin を使用した商品管理
 
-![Laravel-admin を使用した商品管理](https://user-images.githubusercontent.com/58397349/101292590-cdbba580-3853-11eb-826f-4f1af3b7be22.gif)
+![Laravel-admin を使用した商品管理2](https://user-images.githubusercontent.com/58397349/103074586-4620b580-460d-11eb-97d1-8953b910026e.gif)
 
 - laravel/scout（Algolia）を使用した商品検索
 
-![商品検索](https://user-images.githubusercontent.com/58397349/100139594-0e6e0300-2ed3-11eb-86d4-7dda0e182d70.gif)
+![商品検索2](https://user-images.githubusercontent.com/58397349/103074598-4b7e0000-460d-11eb-8655-fc64ee2227de.gif)
 
 - 在庫不足時には購入不可
 
-![在庫不足時には購入不可](https://user-images.githubusercontent.com/58397349/100256779-8b0ee900-2f88-11eb-9a75-fa9753d5c0c9.gif)
+![在庫不足時には購入不可2](https://user-images.githubusercontent.com/58397349/103074604-52a50e00-460d-11eb-86d2-a55659875501.gif)

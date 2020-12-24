@@ -6,14 +6,20 @@ img.cart {
     width: 30px;
 }
 
-img.incart {
+img.index {
     width: 50%;
     display: block;
     margin: 0 auto;
     height: 140px;
     object-fit: cover;
 }
-
+img.incart {
+    width: 240px;
+    display: block;
+    margin: 0 auto;
+    height: 50%;
+    object-fit: cover;
+}
 .mycart_box {
     color: #4c4c4c;
     font-weight: bold;
