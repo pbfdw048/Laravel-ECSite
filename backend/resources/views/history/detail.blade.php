@@ -21,7 +21,7 @@
                 商品名 : {{$my_cart->stock->name}} <br>
                 価格 : {{number_format($my_cart->stock->fee)}}円<br>
                 数量 : {{ $my_cart->cart_count }}<br>
-                <img src="/storage/{{$my_cart->stock->imgpath}}" alt="" class="incart">
+                <img src="{{Storage::disk('s3')->url($my_cart->stock->imgpath)}}" alt="" class=" incart">
                 <br>
                 <span class="h5 font-weight-bold">{{$my_cart->stock->detail}} </span><br>
 

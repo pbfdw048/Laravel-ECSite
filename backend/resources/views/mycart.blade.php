@@ -29,7 +29,7 @@
                     <input type="button" value="変更">
                 </form>
                 <br>
-                <img src="/storage/{{$my_cart->stock->imgpath}}" alt="" class="incart">
+                <img src="{{Storage::disk('s3')->url($my_cart->stock->imgpath)}}" alt="" class="incart">
                 <br>
                 <span class="h5 font-weight-bold">{{$my_cart->stock->detail}} </span><br>
 
