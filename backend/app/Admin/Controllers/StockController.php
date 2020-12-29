@@ -28,12 +28,12 @@ class StockController extends AdminController
         $grid = new Grid(new Stock());
 
         $grid->column('id', __('Id'))->sortable();
-        $grid->column('name', 'Name');
+        $grid->column('name', 'Name')->sortable();
         $grid->column('imgpath', __('Imgpath'))->image();
-        $grid->column('detail', __('Detail'));
+        $grid->column('detail', __('Detail'))->sortable();
         $grid->column('fee', __('Fee'))->sortable();
         $grid->column('stock_count', __('Stock count'))->sortable();
-        $grid->tags()->pluck('name')->label();
+        $grid->tags()->pluck('name')->label()->sortable();
         // $grid->tags()->display(function ($tag) {
         //     $tag = array_map(function ($tag) {
         //         return "<span class='label label-success'>{$tag['name']}</span>";
@@ -42,8 +42,8 @@ class StockController extends AdminController
         //     return join('&nbsp;', $tag);
         // });
 
-        $grid->column('created_at', __('Created at'));
-        $grid->column('updated_at', __('Updated at'));
+        $grid->column('created_at', __('Created at'))->sortable();
+        $grid->column('updated_at', __('Updated at'))->sortable();
 
         return $grid;
     }

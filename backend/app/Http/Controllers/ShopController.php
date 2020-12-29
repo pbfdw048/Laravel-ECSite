@@ -15,7 +15,7 @@ class ShopController extends Controller
 {
     public function index()
     {
-        $stocks = Stock::with('tags')->paginate(6);
+        $stocks = Stock::with('tags')->orderBy('id')->paginate(6);
         return view('shop', compact('stocks'));
     }
 
